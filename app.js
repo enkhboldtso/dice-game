@@ -28,18 +28,44 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
     roundScore = roundScore + diceNumber;
     document.getElementById("current-" + activePlayer).textContent = roundScore;
   } else {
-    diceDom.style.display = "none";
-    // document.getElementById("score-" + activePlayer).textContent = roundScore;
-    roundScore = 0;
-    document.getElementById("current-" + activePlayer).textContent = roundScore;
-    if (activePlayer === 1) {
-      activePlayer = 0;
-      document.querySelector(".player-1-panel").classList.remove("active");
-      document.querySelector(".player-0-panel").classList.add("active");
-    } else {
-      activePlayer = 1;
-      document.querySelector(".player-0-panel").classList.remove("active");
-      document.querySelector(".player-1-panel").classList.add("active");
-    }
+    switchToNextPlayer();
   }
+});
+document.querySelector(".btn-hold").addEventListener("click", function() {
+  if (activePlayer === 0) {
+    scores[0] = scores[0] + roundScore;
+  } else {
+    scores[1] = scores[1] + roundScore;
+  }
+  document.getElementById("score-" + activePlayer).textContent =
+    scores[activePlayer];
+  if (scores[activePlayer] >= 10) {
+    document.getElementById("name-" + activePlayer).textContent = "WINNER";
+    document
+      .querySelector(".player-" + activePlayer + "-panel")
+      .classList.add("winner");
+    document
+      .querySelector(".player-" + activePlayer + "-panel")
+      .classList.remove("active");
+  } else {
+    switchToNextPlayer();
+  }
+});
+function switchToNextPlayer() {
+  diceDom.style.display = "none";
+  // document.getElementById("score-" + activePlayer).textContent = roundScore;
+  roundScore = 0;
+  document.getElementById("current-" + activePlayer).textContent = roundScore;
+  if (activePlayer === 1) {
+    activePlayer = 0;
+    document.querySelector(".player-1-panel").classList.remove("active");
+    document.querySelector(".player-0-panel").classList.add("active");
+  } else {
+    activePlayer = 1;
+    document.querySelector(".player-0-panel").classList.remove("active");
+    document.querySelector(".player-1-panel").classList.add("active");
+  }
+}
+document.querySelector(".btn-new").addEventListener("click", function() {
+  alert("clicked");
 });

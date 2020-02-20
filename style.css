@@ -143,7 +143,13 @@ i {
   margin-top: -4px;
   transition: margin 0.3s;
 }
-
+h1 {
+  color: #ffffff;
+  font-family: "Lato", sans-serif;
+  font-size: 54px;
+  font-weight: 300;
+  line-height: 58px;
+}
 .btn-new {
   top: 45px;
 }
