@@ -22,6 +22,8 @@ function initGame() {
   document.getElementById("current-1").textContent = 0;
   diceDom.style.display = "none";
   document.getElementById("name-0").textContent = "Player 1";
+  document.querySelector(".player-0-panel").classList.remove("active");
+  document.querySelector(".player-1-panel").classList.remove("active");
   document.querySelector(".player-0-panel").classList.add("active");
   document.getElementById("name-1").textContent = "Player 2";
   document.querySelector(".player-0-panel").classList.remove("winner");
@@ -58,7 +60,7 @@ document.querySelector(".btn-hold").addEventListener("click", function() {
     }
     document.getElementById("score-" + activePlayer).textContent =
       scores[activePlayer];
-    if (scores[activePlayer] >= 10) {
+    if (scores[activePlayer] >= 100) {
       isGameOver = true;
       document.getElementById("name-" + activePlayer).textContent = "WINNER!!!";
       document
